@@ -1,0 +1,38 @@
+*{
+    margin: 0;         /*el margin es el espacio fuera de la credencial, elimina margenes automaticos del navegador*/
+    padding: 0;         /* elimina espacios automaticos internos*/
+    box-sizing: border-box;
+}
+
+.tituloapp {
+    background-color: palevioletred;
+    color: white;
+    padding: 15px;
+    border-radius: 15px;
+    width: 530px;
+    text-align: center;
+    margin-left: 35px;
+}
+
+.saludo {
+    color: palevioletred;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+}
+
+.saludo h3 {
+    font-style: italic;
+    color: hotpink;
+    padding: 20px;
+}
+
+.flecha {
+    color: hotpink;
+}
+
+.form-control,
+.form-select{
+    border: 2px solid hotpink;
+}
+
