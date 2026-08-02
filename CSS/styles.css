@@ -36,3 +36,19 @@
     border: 2px solid hotpink;
 }
 
+
+footer{
+    background-color: palevioletred;
+}
+
+.btn-agregar{
+    background-color: white;
+    color: palevioletred;
+    border: 1px solid palevioletred;
+}
+
+.btn-agregar:hover{
+    background-color: palevioletred;
+    border-color: palevioletred;
+    color: white;
+}
