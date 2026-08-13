@@ -5,4 +5,4 @@ Es un planificador diario de tareas; al dar clic en las flechas, ya sea hacia el
 
 3. Enlace Figma: https://www.figma.com/design/PswYloQr9xa66QCw68wZWc/Proyecto-Planificador-de-Tareas?node-id=0-1&t=rDJ4OFgmHgiTlLet-1
 
-4. Enlace Demo: 
+4. Enlace Demo: https://dnnsrncn26.github.io/Planificador_de_tareas/
