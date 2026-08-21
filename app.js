@@ -165,7 +165,7 @@ function agregarTarea() {
                         </div>
 
                         <div class="col-md-4">
-                            <label class="form-label">Fecha de entrega límite</label>
+                            <label class="form-label">Fecha final</label>
 
                             <input
                                 type="date"
@@ -270,7 +270,7 @@ if (datosTarea.descripcion.trim() === "") {
 }
 
 if (datosTarea.fechaEntrega === "") {
-    fechaError.textContent = "La fecha de entrega es obligatoria.";
+    fechaError.textContent = "La fecha final es obligatoria.";
 }
     return;
 }
