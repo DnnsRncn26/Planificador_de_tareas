@@ -5,6 +5,9 @@
 //     </button>
 // </li> */}
 
+const taskManager = new TaskManager();
+console.log(taskManager.tasks);
+
 const contenedorTareas = document.querySelector("#contenedorTareas");
 const fechas = document.querySelector("#fechas");
 const mensajeAlerta = document.querySelector("#mensajeAlerta");
