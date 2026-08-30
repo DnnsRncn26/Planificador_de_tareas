@@ -6,6 +6,7 @@
 // </li> */}
 
 const taskManager = new TaskManager();
+
 console.log(taskManager.tasks);
 
 const contenedorTareas = document.querySelector("#contenedorTareas");
@@ -92,7 +93,7 @@ function agregarTarea() {
     tarjeta.dataset.fecha = obtenerFechaClave(fechaSeleccionada);  // Guardamos la fecha del día seleccionado
 
     tarjeta.innerHTML = `
-        <div class="tarjeta-tarea">
+        <form class="tarjeta-tarea newTaskForm">
             <div class="row g-3">
 
                 <div class="col-md-1 d-flex align-items-start justify-content-center">
@@ -184,7 +185,7 @@ function agregarTarea() {
                         <label class="form-label d-block">Completar tarea</label>
 
                         <button
-                            type="button"
+                            type="submit"
                             class="btn-completar">
                             <i class="bi bi-check"></i>
                         </button>
@@ -202,7 +203,7 @@ function agregarTarea() {
                     </div>
                 </div>
             </div>
-        </div>`;
+        </form>`;
 
 
 contenedorTareas.appendChild(tarjeta);
@@ -238,11 +239,12 @@ inputFecha.addEventListener("input",
 });
 
 
-const botonCompletar = tarjeta.querySelector(".btn-completar");
+const formulario = tarjeta.querySelector(".newTaskForm");
 
-botonCompletar.addEventListener(
-    "click",
-    function () {
+formulario.addEventListener(
+    "submit",
+    function (event) {
+         event.preventDefault();
         const nombre = tarjeta.querySelector(".nombre-tarea");
         const descripcion = tarjeta.querySelector(".descripcion-tarea");
         const fechaEntrega = tarjeta.querySelector(".fecha-entrega");
@@ -279,6 +281,14 @@ if (datosTarea.fechaEntrega === "") {
 }
 
 mensajeAlerta.classList.add("d-none");
+
+taskManager.addTask(
+    nombre.value,
+    descripcion.value,
+    fechaEntrega.value,
+    "PORHACER"
+);
+formulario.reset();
 
 if (!tarjeta.querySelector(".tarjeta-tarea").classList.contains("completada")) {
     datosTarea.estado = "completada";
