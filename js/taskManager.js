@@ -14,4 +14,22 @@ class TaskManager {
         });
 
      }
+         deleteTask(taskId) {
+        const newTasks = [];
+
+        for (let task of this.tasks) {
+            if (task.id !== taskId) {
+                newTasks.push(task);
+            }
+        }
+
+        this.tasks = newTasks;
+    }
+    save() {
+    localStorage.setItem("tasks", JSON.stringify(this.tasks));
+}
+render() {
+    console.log("Render ejecutado");
+    
+}
 }

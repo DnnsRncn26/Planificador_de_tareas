@@ -7,6 +7,7 @@
 
 const taskManager = new TaskManager();
 
+
 console.log(taskManager.tasks);
 
 const contenedorTareas = document.querySelector("#contenedorTareas");
@@ -288,6 +289,7 @@ taskManager.addTask(
     fechaEntrega.value,
     "PORHACER"
 );
+tarjeta.dataset.taskId = taskManager.currentId;
 formulario.reset();
 
 if (!tarjeta.querySelector(".tarjeta-tarea").classList.contains("completada")) {
@@ -311,6 +313,9 @@ const botonEliminar = tarjeta.querySelector(".btn-eliminar");
 
 botonEliminar.addEventListener("click",
     function () {
+        const taskId = Number(tarjeta.dataset.taskId);
+        taskManager.deleteTask(taskId);
+        taskManager.save();
         tarjeta.remove();
         actualizarNumeros();
     }
