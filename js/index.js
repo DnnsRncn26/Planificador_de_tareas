@@ -6,7 +6,7 @@
 // </li> */}
 
 const taskManager = new TaskManager();
-
+taskManager.load();
 
 console.log(taskManager.tasks);
 
@@ -198,7 +198,7 @@ function agregarTarea() {
 
                         <button
                             type="button"
-                            class="btn-eliminar">
+                            class="btn-eliminar delete-button">
                             <i class="bi bi-trash-fill"></i>
                         </button>
                     </div>
@@ -316,7 +316,8 @@ botonEliminar.addEventListener("click",
         const taskId = Number(tarjeta.dataset.taskId);
         taskManager.deleteTask(taskId);
         taskManager.save();
-        tarjeta.remove();
+        taskManager.render();
+        tarjeta.remove();  //este quita visualmente la tarjeta de la pantalla
         actualizarNumeros();
     }
 );

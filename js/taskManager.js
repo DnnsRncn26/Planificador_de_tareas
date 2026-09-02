@@ -28,8 +28,16 @@ class TaskManager {
     save() {
     localStorage.setItem("tasks", JSON.stringify(this.tasks));
 }
+load() {
+    const tasksGuardadas = localStorage.getItem("tasks");
+
+    if (tasksGuardadas) {
+        this.tasks = JSON.parse(tasksGuardadas);
+    }
+}
 render() {
-    console.log("Render ejecutado");
+    console.log(this.tasks);
+
     
 }
 }
