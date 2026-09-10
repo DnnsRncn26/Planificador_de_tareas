@@ -17,6 +17,31 @@ const btnAgregar = document.querySelector("#btnAgregar");
 const btnAnterior = document.querySelector("#btnAnterior");
 const btnSiguiente = document.querySelector("#btnSiguiente");
 
+contenedorTareas.addEventListener("click", function (event) {
+    if (event.target.classList.contains("done-button")) {
+        const parentTask = event.target.closest(".col-md-6");
+
+        if (!parentTask.dataset.taskId) {
+            return;
+        }
+
+        const taskId = Number(parentTask.dataset.taskId);
+
+const task = taskManager.getTaskById(taskId);
+
+if (task) {
+    task.status = "DONE";
+
+    parentTask.querySelector(".tarjeta-tarea").classList.add("completada");
+
+    taskManager.render();
+}
+
+
+        console.log(task);
+    }
+});
+
 let fechaSeleccionada = new Date();
 let numeroTarea = 1;
 
@@ -181,16 +206,26 @@ function agregarTarea() {
                 </div>
 
 
-                <div class="col-md-3">
-                    <div class="text-center mb-4">
-                        <label class="form-label d-block">Completar tarea</label>
+<div class="col-md-3">
+    <div class="text-center mb-4">
+        <label class="form-label d-block">Guardar tarea</label>
 
-                        <button
-                            type="submit"
-                            class="btn-completar">
-                            <i class="bi bi-check"></i>
-                        </button>
-                    </div>
+        <button
+            type="submit"
+            class="btn btn-outline-secondary">
+            Guardar
+        </button>
+    </div>
+
+    <div class="text-center mb-4">
+        <label class="form-label d-block">Completar tarea</label>
+
+        <button
+            type="button"
+            class="btn-completar done-button">
+            Mark As Done
+        </button>
+    </div>
 
 
                     <div class="text-center">
@@ -246,6 +281,9 @@ formulario.addEventListener(
     "submit",
     function (event) {
          event.preventDefault();
+         if (tarjeta.dataset.taskId) {
+    return;
+}
         const nombre = tarjeta.querySelector(".nombre-tarea");
         const descripcion = tarjeta.querySelector(".descripcion-tarea");
         const fechaEntrega = tarjeta.querySelector(".fecha-entrega");

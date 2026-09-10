@@ -25,6 +25,18 @@ class TaskManager {
 
         this.tasks = newTasks;
     }
+
+    getTaskById(taskId) {
+    let foundTask;
+
+    for (let task of this.tasks) {
+        if (task.id === taskId) {
+            foundTask = task;
+        }
+    }
+
+    return foundTask;
+}
     save() {
     localStorage.setItem("tasks", JSON.stringify(this.tasks));
 }
