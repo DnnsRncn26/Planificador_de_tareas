@@ -37,16 +37,30 @@ class TaskManager {
 
     return foundTask;
 }
-    save() {
-    localStorage.setItem("tasks", JSON.stringify(this.tasks));
-}
-load() {
-    const tasksGuardadas = localStorage.getItem("tasks");
+    
+save() {
+    const tasksJson = JSON.stringify(this.tasks);
+    localStorage.setItem("tasks", tasksJson);
 
-    if (tasksGuardadas) {
-        this.tasks = JSON.parse(tasksGuardadas);
+    const currentId = String(this.currentId);
+    localStorage.setItem("currentId", currentId);
+}
+
+load() {
+    const tasksJson = localStorage.getItem("tasks");
+
+    if (tasksJson) {
+        this.tasks = JSON.parse(tasksJson);
+    }
+
+    const currentId = localStorage.getItem("currentId");
+
+    if (currentId) {
+        this.currentId = Number(currentId);
     }
 }
+
+
 render() {
     console.log(this.tasks);
 

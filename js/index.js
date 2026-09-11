@@ -7,7 +7,7 @@
 
 const taskManager = new TaskManager();
 taskManager.load();
-
+taskManager.render();
 console.log(taskManager.tasks);
 
 const contenedorTareas = document.querySelector("#contenedorTareas");
@@ -33,7 +33,7 @@ if (task) {
     task.status = "DONE";
 
     parentTask.querySelector(".tarjeta-tarea").classList.add("completada");
-
+    taskManager.save();
     taskManager.render();
 }
 
@@ -327,6 +327,7 @@ taskManager.addTask(
     fechaEntrega.value,
     "PORHACER"
 );
+taskManager.save();
 tarjeta.dataset.taskId = taskManager.currentId;
 formulario.reset();
 
